@@ -13,3 +13,9 @@
 [submodule "vim/bundle/vim-afterimage"]
 	path = vim/bundle/vim-afterimage
 	url = https://github.com/tpope/vim-afterimage.git
+[submodule "vim/bundle/MatchTag"]
+	path = vim/bundle/MatchTag
+	url = https://github.com/gregsexton/MatchTag.git
+[submodule "vim/bundle/vim-pcgen"]
+	path = vim/bundle/vim-pcgen
+	url = https://github.com/devonjones/vim-pcgen.git
