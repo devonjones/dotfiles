@@ -1,1 +1,0 @@
-/home/testdevon/dotfiles/bash_completion.d
