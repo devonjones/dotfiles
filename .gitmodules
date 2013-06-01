@@ -19,3 +19,9 @@
 [submodule "vim/bundle/vim-pcgen"]
 	path = vim/bundle/vim-pcgen
 	url = https://github.com/devonjones/vim-pcgen.git
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git@github.com:devonjones/oh-my-zsh.git
+[submodule "vim/bundle/vim-zsh"]
+	path = vim/bundle/vim-zsh
+	url = git://github.com/clones/vim-zsh.git
