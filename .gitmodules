@@ -22,6 +22,18 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git@github.com:devonjones/oh-my-zsh.git
-[submodule "vim/bundle/vim-zsh"]
-	path = vim/bundle/vim-zsh
-	url = git://github.com/clones/vim-zsh.git
+[submodule "vim/bundle/vcscommand"]
+	path = vim/bundle/vcscommand
+	url = https://github.com/vim-scripts/vcscommand.vim.git
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/jlanzarotta/bufexplorer.git
+[submodule "vim/bundle/vimwiki"]
+	path = vim/bundle/vimwiki
+	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "vim/bundle/yankring"]
+	path = vim/bundle/yankring
+	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/bundle/manpageview"]
+	path = vim/bundle/manpageview
+	url = https://github.com/vim-scripts/ManPageView.git
