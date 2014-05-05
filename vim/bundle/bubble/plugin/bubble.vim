@@ -4,9 +4,9 @@
 "vmap <C-Up> xkP`[V`]
 "vmap <C-Down> xp`[V`]
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <S-Up> [e
+nmap <S-Down> ]e
 " Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <S-Up> [egv
+vmap <S-Down> ]egv
 
