@@ -51,7 +51,6 @@ function include_distro {
 	fi
 
 	if [ "$distro" != "" ] ; then
-	echo $distro
 		if [ -d $HOME/.$dir.d/$distro -a -r $HOME/.$dir.d/$distro -a -x $HOME/.$dir.d/$distro ]; then
 			for i in $HOME/.$dir.d/$distro/*.sh; do
 				 . $i
