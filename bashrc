@@ -3,7 +3,9 @@
 
 export PATH=$PATH:$HOME/bin
 
-source ~/.employer
+if [ -e ~/.employer ] ; then
+	source ~/.employer
+fi
 
 function include_d {
 	dir=$1
