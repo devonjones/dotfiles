@@ -120,6 +120,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 case "$TERM" in
 	xterm-color) color_prompt=yes;;
 	xterm) color_prompt=yes;;
+	screen) color_prompt=yes;;
 esac
 
 #force_color_prompt=yes
