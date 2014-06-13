@@ -3,7 +3,9 @@
 
 export PATH=$PATH:$HOME/bin
 
-source ~/.employer
+if [ -e ~/.employer ] ; then
+	source ~/.employer
+fi
 
 function include_d {
 	dir=$1
@@ -42,13 +44,13 @@ function include_employer {
 
 function include_distro {
 	distro=""
-	if [ -e /etc/redhad-release ] ; then
+	if [ -e /etc/redhat-release ] ; then
 		distro=$(cat /etc/redhat-release | awk '{ print $1 }')
-	elif [ -e /usr/bin/lsb_release] ; then
+	elif [ -e /usr/bin/lsb_release ] ; then
 		distro=$(lsb_release -i | awk '{ print $NF }')
 	fi
 
-	if [ ! "$distro" ] ; then
+	if [ "$distro" != "" ] ; then
 		if [ -d $HOME/.$dir.d/$distro -a -r $HOME/.$dir.d/$distro -a -x $HOME/.$dir.d/$distro ]; then
 			for i in $HOME/.$dir.d/$distro/*.sh; do
 				 . $i
