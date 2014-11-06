@@ -1,1 +1,1 @@
-alias ipython="ipython --no-confirm-exit"
+alias ipy="ipython --no-confirm-exit"
