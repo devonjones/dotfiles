@@ -69,7 +69,7 @@ function set_prompt {
 	if [ `id -u` = 0 ]
 	then
 		#root
-		usercolor=$EMG
+		usercolor=$EMR
 		echo -ne "${debian_chroot:+($debian_chroot)}$usercolor\u@\h$NONE $colorcode$exit_code$NONE $R\w \$$NONE "
 	else
 		fulldir="$EMB\w$NONE"
