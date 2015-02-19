@@ -69,8 +69,8 @@ function set_prompt {
 	if [ `id -u` = 0 ]
 	then
 		#root
-		usercolor=$EMG
-		echo -ne "${debian_chroot:+($debian_chroot)}$usercolor\u@\h$NONE $colorcode$exit_code$NONE $R\w \$$NONE "
+		rootcolor=$EMR
+		echo -ne "${debian_chroot:+($debian_chroot)}$rootcolor\u@\h$NONE $colorcode$exit_code$NONE $EMB\w \$$NONE "
 	else
 		fulldir="$EMB\w$NONE"
 		cdup=`git rev-parse --show-cdup 2> /dev/null`
