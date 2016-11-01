@@ -119,6 +119,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
 	xterm-color) color_prompt=yes;;
+	xterm-256color) color_prompt=yes;;
 	xterm) color_prompt=yes;;
 	screen) color_prompt=yes;;
 esac
