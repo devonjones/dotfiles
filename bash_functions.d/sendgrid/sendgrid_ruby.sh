@@ -1,3 +1,3 @@
-if which rbenv 2>/dev/null; then
-	eval "$(rbenv init -)"
-fi
+eval "$(chef shell-init bash)"
+export PATH=/opt/chefdk/bin/:/opt/chefdk/embedded/bin/:$PATH
+

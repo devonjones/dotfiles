@@ -1,4 +1,7 @@
 
 export GOPATH=$HOME/go
-export GOROOT=/usr/local/Cellar/go/1.2.1/libexec
+os="${uname}"
+if [ "$os" == "Darwin" ] ; then
+	export GOROOT=/usr/local/Cellar/go/1.2.1/libexec
+fi
 export PATH=$GOPATH/bin:$PATH
