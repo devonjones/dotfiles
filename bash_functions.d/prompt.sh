@@ -73,11 +73,11 @@ function set_prompt {
 		echo -ne "${debian_chroot:+($debian_chroot)}$rootcolor\u@\h$NONE $colorcode$exit_code$NONE $EMB\w \$$NONE "
 	else
 		fulldir="$EMB\w$NONE"
-		cdup=`git rev-parse --show-cdup 2> /dev/null`
+		cdup=`timeout 1 git rev-parse --show-cdup 2> /dev/null`
 		if [ $? == 0 ]
 		then
 			color=$EMM
-			git diff --quiet HEAD &>/dev/null 
+			timeout 1 git diff --quiet HEAD &>/dev/null 
 			if [ $? == 1 ]
 			then
 				color=$R
@@ -88,11 +88,11 @@ function set_prompt {
 			local="${pdir/$dir/}/"
 			untracked=''
 			space=''
-			if [ "x$(git stash list | head -n 1)" != "x" ]; then
+			if [ "x$(timeout 1 git stash list | head -n 1)" != "x" ]; then
 				space=' '
 				untracked="$EMY\$$NONE"
 			fi
-			if [ "x$(git status | grep Untracked)" != "x" ]; then
+			if [ "x$(timeout 1 git status | grep Untracked)" != "x" ]; then
 				space=' '
 				untracked="$untracked$EMR%$NONE"
 			fi
