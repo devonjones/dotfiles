@@ -1,6 +1,6 @@
 
 # Use homebrew python
-export PATH=/usr/local/share/python:$PATH
+# export PATH=/usr/local/share/python:$PATH
 # Default to homebrew utils over OSX
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # Default to GNU tools over BSD
