@@ -1,1 +1,1 @@
-export GITHUB_TOKEN=c590d400b661deca2cfa2b78db32b0b57da7b969
+source ~/.github_token
