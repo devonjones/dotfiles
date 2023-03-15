@@ -1,2 +1,3 @@
-PATH=$PATH:$HOME/.gem/bin
-export GEM_HOME=$HOME/.gem
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
+
