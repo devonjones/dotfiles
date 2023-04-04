@@ -1,0 +1,2 @@
+export AWS_PROFILE=testing
+export BASTION_INSTANCE_ID="i-0ce8a33097454d23d"
