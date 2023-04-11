@@ -1,6 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+if [ "$__zprofile" != true ] ; then
+    source ~/.zprofile
+fi
+
 include_d zshrc
 
 # Path to your oh-my-zsh installation.
@@ -10,7 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="devon"
+ZSH_THEME="valid"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -65,14 +69,17 @@ ZSH_THEME="devon"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/dotfiles/custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rvm nvm pyenv aws kubectl helm kubie)
+
+export SHOW_AWS_PROMPT=false
+
+plugins=(git rvm nvm pyenv aws kubectl helm kubie fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,5 +114,6 @@ export PATH=$PATH:$HOME/bin
 
 # Pyenv
 
-pyenv activate valid-eval
 export AWS_PROFILE=testing
+export VIRTUAL_ENV_DISABLE_PROMPT=false
+pyenv activate valid-eval &>/dev/null

@@ -89,7 +89,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+    prompt_segment black green "%(!.%{%F{yellow}%}.)%n@%m"
   fi
 }
 
@@ -135,6 +135,7 @@ prompt_git() {
       mode=" >R>"
     fi
 
+
     setopt promptsubst
     autoload -Uz vcs_info
 
@@ -147,6 +148,11 @@ prompt_git() {
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
     echo -n "${${ref:gs/%/%%}/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
+
+		if [[ -n "$(git stash list 2> /dev/null | head -n 1 )" ]]; then
+			prompt_segment yellow red "\$"
+		fi
+
   fi
 }
 
@@ -218,20 +224,12 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG '%~'
 }
 
-# Virtualenv: current working virtualenv
-prompt_virtualenv() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$VIRTUAL_ENV_DISABLE_PROMPT" ]]; then
-    prompt_segment blue black "(${VIRTUAL_ENV:t:gs/%/%%})"
-  fi
-}
-
 # Status:
 # - was there an error
 # - am I root
 # - are there background jobs?
 prompt_status() {
   local -a symbols
-
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
@@ -239,13 +237,24 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
-#AWS Profile:
-# - display current AWS_PROFILE name
-# - displays yellow on red if profile name contains 'production' or
-#   ends in '-prod'
-# - displays black on green otherwise
+################
+# Environments #
+################
+
+prompt_kubie() {
+  [[ -n ${KUBIE_ACTIVE} ]] || return
+  local context="$(kubie info ctx)"
+  case "$context" in
+    *-prod|*-prd|*production*) prompt_segment red yellow "$context" ;;
+    *-stage|*-stg|*staging*) prompt_segment yellow black "$context" ;;
+    *) prompt_segment cyan black "$context" ;;
+  esac
+  prompt_segment white black "$(kubie info ns)"
+  #echo "${ZSH_THEME_KUBIE_PREFIX:=[}%{$fg[red]%}$(kubie info ctx)%{$reset_color%}|%{$fg[green]%}$(kubie info ns)%{$reset_color%}${ZSH_THEME_KUBIE_SUFFIX:=]}"
+}
+
 prompt_aws() {
-  [[ -z "$AWS_PROFILE" || "$SHOW_AWS_PROMPT" = false ]] && return
+  [[ -z "$AWS_PROFILE" || "$SHOW_AWS_LPROMPT" = false ]] && return
   case "$AWS_PROFILE" in
     *-prod|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
     *-stage|*staging*) prompt_segment yellow black  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
@@ -253,12 +262,43 @@ prompt_aws() {
   esac
 }
 
+
+#############
+# Languages #
+#############
+
+prompt_virtualenv() {
+  local version="$(python3 -V 2>&1 | cut -d' ' -f2)"
+  if [[ -n "$VIRTUAL_ENV" && -n "$VIRTUAL_ENV_DISABLE_PROMPT" ]]; then
+    prompt_segment black yellow "python $version (${VIRTUAL_ENV:t:gs/%/%%})"
+  else
+    prompt_segment black yellow "python $version"
+  fi
+}
+
+prompt_ruby() {
+  if command -v rvm &> /dev/null
+  then
+    prompt_segment black red "$(ruby_prompt_info)"
+  fi
+}
+
+prompt_nvm() {
+  which nvm &>/dev/null || return
+  prompt_segment black magenta "node $(nvm_prompt_info)"
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
-  prompt_status
-  prompt_virtualenv
+  prompt_kubie
   prompt_aws
+  prompt_segment black default "\n"
+  prompt_virtualenv
+  prompt_ruby
+  prompt_nvm
+  prompt_segment black default "\n"
+  prompt_status
   prompt_context
   prompt_dir
   prompt_git
@@ -266,5 +306,7 @@ build_prompt() {
   prompt_hg
   prompt_end
 }
+
+#PROMPT='%{%f%b%k%}$(build_prompt) '
 
 PROMPT='%{%f%b%k%}$(build_prompt) '

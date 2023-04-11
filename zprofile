@@ -8,6 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+__zprofile=true
+
 if [ -e ~/.employer ] ; then
 	source ~/.employer
 fi

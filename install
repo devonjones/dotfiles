@@ -13,9 +13,6 @@ Dir['*'].each do |file|
   `ln -s #{File.expand_path file} #{target}`
 end
 
-
-`cp -r custom oh-my-zsh/custom`
-
 target = File.join(home, "TechNotes")
 `ln -s "TechNotes" #{target}`
 
