@@ -14,10 +14,6 @@ fi
 
 export PATH=$PATH:$HOME/bin
 
-if [ -e ~/.employer ] ; then
-	source ~/.employer
-fi
-
 function include_d {
 	dir=$1
 	if [ -d $HOME/.$dir.d -a -r $HOME/.$dir.d -a -x $HOME/.$dir.d ]; then
