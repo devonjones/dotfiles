@@ -63,6 +63,7 @@ prompt_segment() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
     echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
   else
@@ -243,6 +244,7 @@ prompt_status() {
 
 prompt_kubie() {
   [[ -n ${KUBIE_ACTIVE} ]] || return
+  CONTINUE+="kubie"
   local context="$(kubie info ctx)"
   case "$context" in
     *-prod|*-prd|*production*) prompt_segment red yellow "$context" ;;
@@ -255,6 +257,7 @@ prompt_kubie() {
 
 prompt_aws() {
   [[ -z "$AWS_PROFILE" || "$SHOW_AWS_LPROMPT" = false ]] && return
+  CONTINUE+="aws"
   case "$AWS_PROFILE" in
     *-prod|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
     *-stage|*staging*) prompt_segment yellow black  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
@@ -291,13 +294,16 @@ prompt_nvm() {
 ## Main prompt
 build_prompt() {
   RETVAL=$?
+  CONTINUE=""
   prompt_kubie
   prompt_aws
-  prompt_segment black default "\n"
+  if [[ -n $CONTINUE ]] ; then
+    prompt_segment NONE NONE "\n"
+  fi
   prompt_virtualenv
   prompt_ruby
   prompt_nvm
-  prompt_segment black default "\n"
+  prompt_segment NONE NONE "\n"
   prompt_status
   prompt_context
   prompt_dir
