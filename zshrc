@@ -112,12 +112,4 @@ source $ZSH/oh-my-zsh.sh
 # local bin
 export PATH=$PATH:$HOME/bin
 
-<<<<<<< Updated upstream
 include_d local
-=======
-export VIRTUAL_ENV_DISABLE_PROMPT=false
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
->>>>>>> Stashed changes
