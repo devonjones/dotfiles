@@ -112,8 +112,4 @@ source $ZSH/oh-my-zsh.sh
 # local bin
 export PATH=$PATH:$HOME/bin
 
-# Pyenv
-
-export AWS_PROFILE=testing
-export VIRTUAL_ENV_DISABLE_PROMPT=false
-pyenv activate valid-eval &>/dev/null
+include_d local
