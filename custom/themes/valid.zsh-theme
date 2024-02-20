@@ -259,9 +259,9 @@ prompt_aws() {
   [[ -z "$AWS_PROFILE" || "$SHOW_AWS_LPROMPT" = false ]] && return
   CONTINUE+="aws"
   case "$AWS_PROFILE" in
-    *-prod|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
-    *-stage|*staging*) prompt_segment yellow black  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
-    *) prompt_segment green black "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
+    *-prod|*-prd|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
+    *-stage|*-stg|*staging*) prompt_segment yellow black  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
+    *) prompt_segment cyan black "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
   esac
 }
 
