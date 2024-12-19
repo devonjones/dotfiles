@@ -7,3 +7,6 @@ function hgrep {
         grep $@ ~/.bash_eternal_history
         grep $@ ~/.zsh_eternal_history
 }
+
+setopt incappendhistory
+alias histup="fc -RI"
