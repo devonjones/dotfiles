@@ -246,7 +246,6 @@ prompt_kubie() {
   [[ -n ${KUBIE_ACTIVE} ]] || return
   CONTINUE+="kubie"
   local context="$(kubie info ctx)"
-  echo $context
   case "$context" in
     *-prod|*-prd*|*production*) prompt_segment red yellow "$context" ;;
     *-stage|*-stg*|*staging*) prompt_segment yellow black "$context" ;;
