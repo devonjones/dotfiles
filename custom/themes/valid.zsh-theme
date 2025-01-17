@@ -246,9 +246,10 @@ prompt_kubie() {
   [[ -n ${KUBIE_ACTIVE} ]] || return
   CONTINUE+="kubie"
   local context="$(kubie info ctx)"
+  echo $context
   case "$context" in
-    *-prod|*-prd|*production*) prompt_segment red yellow "$context" ;;
-    *-stage|*-stg|*staging*) prompt_segment yellow black "$context" ;;
+    *-prod|*-prd*|*production*) prompt_segment red yellow "$context" ;;
+    *-stage|*-stg*|*staging*) prompt_segment yellow black "$context" ;;
     *) prompt_segment cyan black "$context" ;;
   esac
   prompt_segment white black "$(kubie info ns)"
@@ -259,8 +260,8 @@ prompt_aws() {
   [[ -z "$AWS_PROFILE" || "$SHOW_AWS_LPROMPT" = false ]] && return
   CONTINUE+="aws"
   case "$AWS_PROFILE" in
-    *-prod|*-prd|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
-    *-stage|*-stg|*staging*) prompt_segment yellow black  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
+    *-prod|*-prd*|*production*) prompt_segment red yellow  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
+    *-stage|*-stg*|*staging*) prompt_segment yellow black  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
     *) prompt_segment cyan black "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
   esac
 }
