@@ -34,8 +34,9 @@ function include_os {
 			 . $i
 		done
 	fi
-	if [ "$os" == "Linux" ] ; then
-		include_distro $i
+	if [[ "$os" == "Linux" ]] ; then
+		include_distro $dir
+		include_wsl $dir
 	fi
 }
 
@@ -50,6 +51,7 @@ function include_employer {
 }
 
 function include_distro {
+	dir=$1
 	distro=""
 	if [ -e /etc/redhat-release ] ; then
 		distro=$(cat /etc/redhat-release | awk '{ print $1 }')
@@ -61,6 +63,19 @@ function include_distro {
 		if [ -d $HOME/.$dir.d/$distro -a -r $HOME/.$dir.d/$distro -a -x $HOME/.$dir.d/$distro ]; then
 			for i in $HOME/.$dir.d/$distro/*.sh; do
 				 . $i
+			done
+		fi
+	fi
+}
+
+function include_wsl {
+	dir=$1
+	wsl="$(uname -a)"
+
+	if [[ $wsl =~ "WSL2" ]] ; then
+		if [ -d $HOME/.$dir.d/WSL2 -a -r $HOME/.$dir.d/WSL2 -a -x $HOME/.$dir.d/WSL2 ] ; then
+			for i in $HOME/.$dir.d/WSL2/*.sh; do
+				. $i
 			done
 		fi
 	fi
@@ -79,5 +94,3 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 . "$HOME/.local/bin/env"
-
-. "$HOME/.atuin/bin/env"
