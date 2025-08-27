@@ -1,10 +1,12 @@
+if command -v kubectl &> /dev/null
+then
+  # Kubectl
+  command -v kubectl >/dev/null && source <(kubectl completion zsh)
 
-# Kubectl
-command -v kubectl >/dev/null && source <(kubectl completion zsh)
+  # Flux
+  command -v flux >/dev/null && . <(flux completion zsh)
 
-# Flux
-command -v flux >/dev/null && . <(flux completion zsh)
+  alias kc=kubecolor
 
-alias kc=kubecolor
-
-compdef kubecolor=kubectl
+  compdef kubecolor=kubectl
+fi

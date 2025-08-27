@@ -7,3 +7,6 @@ include_d bashrc
 export PATH="$PATH:$HOME/.rvm/bin"
 
 . "$HOME/.local/bin/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"

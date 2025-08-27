@@ -8,5 +8,6 @@ function hgrep {
         grep $@ ~/.zsh_eternal_history
 }
 
-setopt incappendhistory
+setopt inc_append_history
+setopt share_history
 alias histup="fc -RI"
