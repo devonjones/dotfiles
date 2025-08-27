@@ -1,2 +1,2 @@
-export PATH=$HOME/.atuin/bin:$PATH
+. "$HOME/.atuin/bin/env"
 eval "$(atuin init bash)"
