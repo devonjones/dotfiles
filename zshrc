@@ -79,7 +79,7 @@ ZSH_CUSTOM=$HOME/dotfiles/custom
 
 export SHOW_AWS_PROMPT=false
 
-plugins=(git rvm nvm pyenv aws kubectl helm kubie fzf)
+plugins=(git rvm nvm pyenv aws fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,3 +118,5 @@ include_d local
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"
