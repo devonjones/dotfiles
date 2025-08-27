@@ -7,3 +7,6 @@ if [ -d "$HOME/.pyenv" ] ; then
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=false
+
+# UV
+. $HOME/.local/bin/env
