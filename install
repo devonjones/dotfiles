@@ -9,6 +9,7 @@ Dir['*'].each do |file|
   next if file =~ /README.md/
   next if file =~ /custom/
   next if file =~ /Tech Notes/
+  next if file =~ /other_config/
   target = File.join(home, ".#{file}")
   `ln -s #{File.expand_path file} #{target}`
 end
