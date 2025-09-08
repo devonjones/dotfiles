@@ -122,4 +122,4 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
