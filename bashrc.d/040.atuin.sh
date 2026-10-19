@@ -1,2 +1,1 @@
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init bash)"
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
