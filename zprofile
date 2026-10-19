@@ -10,10 +10,6 @@
 
 __zprofile=true
 
-if [ -e ~/.employer ] ; then
-	source ~/.employer
-fi
-
 export PATH=$PATH:$HOME/bin
 
 if [ -f "$HOME/dotfiles/include_d" ]; then

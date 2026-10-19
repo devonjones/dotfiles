@@ -8,10 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-if [ -e ~/.employer ] ; then
-	source ~/.employer
-fi
-
 export PATH=$PATH:$HOME/bin
 
 if [ -f "$HOME/dotfiles/include_d" ]; then

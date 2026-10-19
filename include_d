@@ -1,6 +1,10 @@
 # Loader functions shared by profile, zprofile and bashrc.
 # include_d <name> sources ~/.<name>.d/*.sh, then the OS, distro, WSL2 and $EMPLOYER subdirectories.
 
+# ~/.employer can set EMPLOYER; machines without one are personal
+[ -e ~/.employer ] && . ~/.employer
+export EMPLOYER="${EMPLOYER:-Personal}"
+
 function include_d {
 	dir=$1
 	if [ -d $HOME/.$dir.d -a -r $HOME/.$dir.d -a -x $HOME/.$dir.d ]; then
