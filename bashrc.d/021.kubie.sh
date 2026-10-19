@@ -1,4 +1,5 @@
 #Kubie completion script
+command -v kubie >/dev/null || return
 
 _kubiecomplete()
 {
