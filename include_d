@@ -30,7 +30,7 @@ function include_os {
 function include_employer {
 	dir=$1
 
-	if [ -d $HOME/.$dir.d/$EMPLOYER -a -r $HOME/.$dir.d/$EMPLOYER -a -x $HOME/.$dir.d/$EMPLOYER ]; then
+	if [ -n "$EMPLOYER" -a -d $HOME/.$dir.d/$EMPLOYER -a -r $HOME/.$dir.d/$EMPLOYER -a -x $HOME/.$dir.d/$EMPLOYER ]; then
 		for i in $HOME/.$dir.d/$EMPLOYER/*.sh; do
 			 . $i
 		done

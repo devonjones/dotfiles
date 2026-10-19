@@ -35,6 +35,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null; then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
-	pyenv virtualenvwrapper
+	[ -d "$PYENV_ROOT/plugins/pyenv-virtualenvwrapper" ] && pyenv virtualenvwrapper
 	export PYENV_VIRTUALENVWRAPPER_PERFER_PYENV="true"
 fi

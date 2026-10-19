@@ -1,1 +1,1 @@
-source ~/.github_token
+[ -f ~/.github_token ] && source ~/.github_token
