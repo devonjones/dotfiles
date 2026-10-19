@@ -82,6 +82,7 @@ function include_wsl {
 }
 
 include_d profile
+include_d local
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then

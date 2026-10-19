@@ -113,7 +113,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin
 
 #unsetopt share_history
-include_d local
 
 # These don't work unless they are at the end for some reason
 export NVM_DIR="$HOME/.nvm"

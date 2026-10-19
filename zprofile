@@ -84,3 +84,4 @@ function include_wsl {
 }
 
 include_d profile
+include_d local
