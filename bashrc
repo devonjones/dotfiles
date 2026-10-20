@@ -9,6 +9,8 @@ else
 fi
 
 include_d bashrc
+# login shells already loaded ~/.local.d from profile
+shopt -q login_shell || include_d local
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
