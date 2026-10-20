@@ -4,3 +4,7 @@
 [submodule "vim"]
 	path = vim
 	url = git@github.com:devonjones/vimfiles.git
+	ignore = dirty
+[submodule "custom/plugins/kubie"]
+	path = custom/plugins/kubie
+	url = git@github.com:devonjones/zsh-kubie.git
