@@ -11,6 +11,21 @@ vim.o.colorcolumn = '80'
 -- replaces vim-localvimrc: nvim asks once per .nvim.lua/.exrc and remembers
 vim.o.exrc = true
 
+vim.o.clipboard = 'unnamedplus'
+-- over ssh with no X/Wayland: copy via OSC 52 to the local terminal; paste
+-- from nvim's own register, since many terminals refuse OSC 52 reads
+if vim.env.SSH_TTY and not (vim.env.DISPLAY or vim.env.WAYLAND_DISPLAY) then
+  local osc52 = require('vim.ui.clipboard.osc52')
+  local function paste()
+    return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') }
+  end
+  vim.g.clipboard = {
+    name = 'OSC 52 (copy only)',
+    copy = { ['+'] = osc52.copy('+'), ['*'] = osc52.copy('*') },
+    paste = { ['+'] = paste, ['*'] = paste },
+  }
+end
+
 vim.pack.add({
   'https://github.com/tpope/vim-fugitive',
   'https://github.com/lewis6991/gitsigns.nvim',

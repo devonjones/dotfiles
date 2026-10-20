@@ -1,2 +1,2 @@
-export EDITOR=/usr/bin/vim
+export EDITOR=${EDITOR:-/usr/bin/vim}
 set -o vi

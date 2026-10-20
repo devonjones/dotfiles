@@ -1,0 +1,1 @@
+../bashrc.d/060.nvim.sh
