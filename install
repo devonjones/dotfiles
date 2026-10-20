@@ -14,11 +14,11 @@ Dir['*'].each do |file|
   next if file =~ /bash-preexec.sh/
   next if file =~ /nvim/
   target = File.join(home, ".#{file}")
-  `ln -s #{File.expand_path file} #{target}`
+  `ln -sn #{File.expand_path file} #{target}`
 end
 
 `mkdir -p #{home}/.config`
-`ln -s #{File.expand_path 'nvim'} #{home}/.config/nvim`
+`ln -sn #{File.expand_path 'nvim'} #{home}/.config/nvim`
 
 target = File.join(home, "TechNotes")
 `ln -s "TechNotes" #{target}`
