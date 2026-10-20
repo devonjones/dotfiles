@@ -16,6 +16,13 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 Restart your shell.
 
+# Neovim
+[neovim](https://neovim.io) 0.12+ (for the built-in `vim.pack`). Config is `nvim/`, which `./install` links to `~/.config/nvim`. Plugins install on first launch at the revisions in `nvim/nvim-pack-lock.json`; fzf-lua uses the fzf above.
+
+```
+brew install neovim
+```
+
 # Python
 ## Pyenv
 [pyenv](https://github.com/pyenv/pyenv)
