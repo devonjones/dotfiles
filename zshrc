@@ -122,3 +122,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/google-cloud-sdk/path.zsh.inc"; fi
