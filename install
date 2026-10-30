@@ -12,6 +12,7 @@ Dir['*'].each do |file|
   next if file =~ /other_config/
   next if file =~ /include_d/
   next if file =~ /bash-preexec.sh/
+  next if file =~ /claude/
   next if file =~ /nvim/
   target = File.join(home, ".#{file}")
   `ln -sn #{File.expand_path file} #{target}`
@@ -19,6 +20,8 @@ end
 
 `mkdir -p #{home}/.config`
 `ln -sn #{File.expand_path 'nvim'} #{home}/.config/nvim`
+`mkdir -p #{home}/.claude`
+`ln -sn #{File.expand_path 'claude/CLAUDE.md'} #{home}/.claude/CLAUDE.md`
 
 target = File.join(home, "TechNotes")
 `ln -s "TechNotes" #{target}`
