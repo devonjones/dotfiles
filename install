@@ -4,7 +4,8 @@
 
 home = File.expand_path('~')
 
-Dir['*'].each do |file|
+# tracked entries only, so stray untracked dirs never get linked
+`git ls-tree --name-only HEAD`.split("\n").reject { |f| f.start_with?('.') }.each do |file|
   next if file =~ /install/
   next if file =~ /README.md/
   next if file =~ /custom/
