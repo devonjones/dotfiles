@@ -23,6 +23,13 @@ end
 `mkdir -p #{home}/.claude`
 `ln -sn #{File.expand_path 'claude/CLAUDE.md'} #{home}/.claude/CLAUDE.md`
 
+# per-employer claude rules, resolved the same way as include_d
+employer = `[ -e #{home}/.employer ] && . #{home}/.employer; echo "${EMPLOYER:-Personal}"`.strip
+`mkdir -p #{home}/.claude/rules`
+Dir["claude/#{employer}/*.md"].each do |rule|
+  `ln -sn #{File.expand_path rule} #{home}/.claude/rules/#{File.basename rule}`
+end
+
 target = File.join(home, "TechNotes")
 `ln -s "TechNotes" #{target}`
 
