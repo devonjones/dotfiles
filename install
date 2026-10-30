@@ -8,7 +8,6 @@ Dir['*'].each do |file|
   next if file =~ /install/
   next if file =~ /README.md/
   next if file =~ /custom/
-  next if file =~ /Tech Notes/
   next if file =~ /other_config/
   next if file =~ /include_d/
   next if file =~ /bash-preexec.sh/
@@ -29,9 +28,6 @@ employer = `[ -e #{home}/.employer ] && . #{home}/.employer; echo "${EMPLOYER:-P
 Dir["claude/#{employer}/*.md"].each do |rule|
   `ln -sn #{File.expand_path rule} #{home}/.claude/rules/#{File.basename rule}`
 end
-
-target = File.join(home, "TechNotes")
-`ln -s "TechNotes" #{target}`
 
 # git push on commit
 `echo 'git push' > .git/hooks/post-commit`
