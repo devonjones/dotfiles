@@ -3,6 +3,7 @@
 # from http://errtheblog.com/posts/89-huba-huba
 
 home = File.expand_path('~')
+Dir.chdir(__dir__)
 
 # tracked entries only, so stray untracked dirs never get linked
 `git ls-tree --name-only HEAD`.split("\n").reject { |f| f.start_with?('.') }.each do |file|
